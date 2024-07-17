@@ -1,5 +1,6 @@
 "use client";
 
+import { postBBS } from "@/app/actions/postBBSAction";
 // import { postBBS } from "@/app/actions/postBBSAction";
 import { Button } from "@/components/ui/button";
 import {
@@ -12,6 +13,7 @@ import {
     FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 // import { Textarea } from "@/components/ui/textarea";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
@@ -44,9 +46,9 @@ const CreateBBSPage = () => {
         },
     });
 
-    async function onSubmit() {
-        // const { username, title, content } = value;
-        // postBBS({ username, title, content });
+    async function onSubmit(value: z.infer<typeof formSchema>) {
+        const { username, title, content } = value;
+        postBBS({ username, title, content });
     }
 
     return (
@@ -88,11 +90,11 @@ const CreateBBSPage = () => {
                         <FormItem>
                             <FormLabel>本文</FormLabel>
                             <FormControl>
-                                {/* <Textarea
+                                <Textarea
                                     placeholder="投稿内容"
                                     className="resize-none"
                                     {...field}
-                                /> */}
+                                />
                             </FormControl>
 
                             <FormMessage />
