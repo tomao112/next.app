@@ -3,7 +3,7 @@ import Link from 'next/link';
 import React from 'react'
 
 async function getDetailBBSData(id: number) {
-    const response = await fetch(`http://localhost:3000/api/post/${id}`, {
+    const response = await fetch(`http://localhost:3001/api/post/${id}`, {
         cache: "no-store",
     });
 
@@ -26,7 +26,10 @@ const BBSDetailPage = async ({ params }: { params: { bbsId: number } }) => {
                 <p className='text-gray-900'>{content}</p>
             </div>
 
-            <Link href={"/"} className='bg-blue-500 text-white font-bold py-2 px-4 rounded-md'>戻る</Link>
+            <div className='mr-8'>
+                <Link href={"/"} className='bg-blue-500 text-white font-bold py-2 px-4 rounded-md'>戻る</Link>
+                <Link href={"/"} className='bg-red-500 text-white font-bold py-2 px-4 rounded-md'>削除</Link>
+            </div>
         </div>
     );
 };
