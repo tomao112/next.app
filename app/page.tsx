@@ -3,7 +3,7 @@ import { PrismaClient } from '@prisma/client/extension';
 import { BBSData } from './types/types';
 
 async function getBBSAllData() {
-  const response = await fetch("http://localhost:3001/api/post", {
+  const response = await fetch("http://localhost:3000/api/post", {
     cache: "no-store",
   });
 
